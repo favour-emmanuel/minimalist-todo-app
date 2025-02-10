@@ -7,7 +7,10 @@ const SignIn = () => {
 
   return (
     <div className=" px-10">
-      <Link to={"/"} className="flex items-center gap-2 py-10  text-black">
+      <Link
+        to={"/"}
+        className="flex items-center gap-2 lg:py-10 py-12  text-black"
+      >
         <Icon icon="mi:home" className="text-lg" />
         Back to Home
       </Link>
