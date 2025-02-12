@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import bgImage from "/cta-shape-1.png";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="relative">
       <div className="flex flex-col items-center justify-center min-h-screen bg-[#f7f7f7] p-4">
         <p className="mb-10 lg:mb-[7rem] px-3 py-1.5 rounded-full shadow border border-[#cd9f8cc8]  bg-[#e8e0e064]">
           Minimalist To-do App
@@ -19,11 +20,12 @@ const HomePage = () => {
         </p>
         <Link
           to={"/signIn"}
-          className="mt-16 py-3.5 flex justify-center items-center rounded-lg cursor-pointer text-[#f7f7f7] bg-[#1d0800fd] max-w-[18rem] w-full"
+          className="mt-16 z-50 py-3.5 flex justify-center items-center rounded-lg cursor-pointer text-[#f7f7f7] bg-[#1d0800fd] max-w-[18rem] w-full"
         >
           Get Started
         </Link>
       </div>
+      <img src={bgImage} alt="" className="absolute bottom-0" />
     </div>
   );
 };

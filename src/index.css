@@ -6,3 +6,7 @@ body {
   background-color: #f7f7f7;
   font-family: "Mulish", serif;
 }
+
+:root {
+  --appBlack: #496;
+}
