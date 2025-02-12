@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { toast } from "react-toastify";
@@ -25,29 +29,42 @@ const Login = () => {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      toast.success("Sign in Successful");
+      navigate("/todo");
+    } catch (err) {
+      toast.error("Error signing in");
+    }
+  };
+
   return (
-    <div className="px-10">
+    <div className="lg:px-10 px-4">
       <Link
         to={"/"}
-        className="flex items-center gap-2 lg:py-10 py-12  text-black"
+        className="flex items-center gap-2 lg:py-10 pt-5 lg:pt-0 text-black"
       >
-        <Icon icon="mi:home" className="text-lg" />
+        <Icon icon="mi:home" className="lg:text-lg text-[15.8px]" />
         Back to Home
       </Link>
-      <div className="flex items-center justify-center min-[70vh]">
+      <div className="flex items-center justify-center lg:min-[70vh] h-screen">
         <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-          <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+          <h2 className="text-2xl font-semibold text-center mb-6">
+            Welcome <span className="text-base text-[#905f5f]">❤</span>
+          </h2>
           <form className="space-y-7" onSubmit={handleLogin}>
             <input
               type="email"
               placeholder="Email"
-              className="w-full p-2 border rounded outline-none"
+              className="w-full p-2 border rounded outline-none text-sm lg:text-[15.8px]"
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
               placeholder="Password"
-              className="w-full p-2 border rounded outline-none"
+              className="w-full p-2 border rounded outline-none text-sm lg:text-[15.8px]"
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
@@ -62,12 +79,16 @@ const Login = () => {
             <span className="mx-2 text-gray-500">or</span>
             <div className="flex-grow border-t"></div>
           </div>
-          <div className="w-full flex items-center gap-3 justify-center border py-2 rounded">
+          <button
+            type="button"
+            onClick={handleGoogleLogin}
+            className="w-full cursor-pointer flex items-center gap-3 justify-center border py-2 rounded"
+          >
             <span className="text-xl">
               <Icon icon="flat-color-icons:google" />
             </span>
-            <p> Continue with Google</p>
-          </div>
+            <p className="text-sm lg:text-[15.8px]"> Continue with Google</p>
+          </button>
         </div>
       </div>
     </div>
