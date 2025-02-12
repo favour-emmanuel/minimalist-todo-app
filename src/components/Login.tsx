@@ -44,12 +44,12 @@ const Login = () => {
     <div className="lg:px-10 px-4">
       <Link
         to={"/"}
-        className="flex items-center gap-2 lg:py-10 pt-5 lg:pt-0 text-black"
+        className="flex items-center gap-2 lg:py-10 pt-5 text-black"
       >
-        <Icon icon="mi:home" className="lg:text-lg text-[15.8px]" />
+        <Icon icon="mi:home" className="lg:text-base text-[15.8px]" />
         Back to Home
       </Link>
-      <div className="flex items-center justify-center lg:min-[70vh] h-screen">
+      <div className="flex items-center justify-center h-screen lg:h-[80vh] ">
         <div className="bg-white p-8 rounded-lg shadow-lg w-96">
           <h2 className="text-2xl font-semibold text-center mb-6">
             Welcome <span className="text-base text-[#905f5f]">❤</span>

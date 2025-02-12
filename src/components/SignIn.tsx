@@ -47,7 +47,7 @@ const SignIn = () => {
         to={"/"}
         className="flex items-center gap-2 lg:py-10 py-8  text-black"
       >
-        <Icon icon="mi:home" className="lg:text-lg text-[15.8px]" />
+        <Icon icon="mi:home" className="lg:text-base text-[15.8px]" />
         Back to Home
       </Link>
       <div className="flex items-center justify-center lg:h-[70vh] h-screen">
