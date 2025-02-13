@@ -8,11 +8,14 @@ const HomePage = () => {
         <p className="mb-10 lg:mb-[7rem] px-3 py-1.5 rounded-full shadow border border-[#cd9f8cc8]  bg-[#e8e0e064]">
           Minimalist To-do App
         </p>
-        <div className="text-center mb-3 flex items-center space-x-2">
-          <h1 className="lg:text-5xl text-4xl font-bold text-[#1d0800e4]">
-            Stay Organized, Stay Productive
-          </h1>
-          <span className="h-2 w-2 bg-teal-600 rounded-full animate-ping"></span>
+
+        <div className="relative">
+          <div className="text-center mb-3 flex items-center space-x-2">
+            <h1 className="lg:text-5xl text-4xl font-bold text-[#1d0800e4]">
+              Stay Organized, Stay Productive
+            </h1>
+            <span className="h-2 w-2 bg-teal-600 rounded-full animate-ping"></span>
+          </div>
         </div>
         <p className="text-gray-600 lg:mt-0 mt-5 text-center lg:text-[15.8px] text-lg">
           Manage your tasks effortlessly with our simple and elegant{" "}
