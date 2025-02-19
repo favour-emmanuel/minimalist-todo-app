@@ -38,10 +38,11 @@ const TodoList = () => {
   // Add new task
   const addTask = async () => {
     if (!task.trim()) return;
-    const newTask = { id: uuidv4(), text: task, userId: user?.uid };
+    const newTask = { text: task, userId: user?.uid };
 
-    await addDoc(taskCollectionRef, newTask);
-    setTasks([...tasks, newTask]);
+    const docRef = await addDoc(taskCollectionRef, newTask);
+    setTasks([...tasks, { id: docRef.id, text: task }]);
+
     setTask("");
   };
 
@@ -64,13 +65,14 @@ const TodoList = () => {
     const taskRef = doc(db, "tasks", id);
     await updateDoc(taskRef, { text: editedTaskText });
 
-    setTasks(
-      tasks.map((task) =>
+    // Update local state directly instead of refetching everything
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
         task.id === id ? { ...task, text: editedTaskText } : task
       )
     );
 
-    setEditingTaskId(null); // Exit edit mode
+    setEditingTaskId(null);
     setEditedTaskText("");
   };
 
@@ -78,7 +80,7 @@ const TodoList = () => {
     <div className="lg:px-10 px-4">
       <Link
         to={"/"}
-        className="flex items-center gap-2 lg:py-8 pt-5 text-black"
+        className="flex items-center gap-2 lg:py-8 pt-5 text-black max-w-[10rem]"
       >
         <Icon icon="mi:home" className="lg:text-base text-[15.8px]" />
         Back to Home
@@ -116,7 +118,7 @@ const TodoList = () => {
                   type="text"
                   value={editedTaskText}
                   onChange={(e) => setEditedTaskText(e.target.value)}
-                  className="border w-full outline-none bg-transparent"
+                  className="border border-[#0190a0] py-1 px-1.5 w-full outline-none bg-transparent"
                 />
               ) : (
                 <span>{text}</span>
@@ -125,14 +127,14 @@ const TodoList = () => {
               <div className="flex gap-3">
                 {editingTaskId === id ? (
                   <button
-                    className="text-green-500"
+                    className="text-green-500 cursor-pointer"
                     onClick={() => updateTask(id)}
                   >
-                    <Icon icon="akar-icons:check" width="24" height="24" />
+                    <Icon icon="mingcute:check-fill" width="24" height="24" />
                   </button>
                 ) : (
                   <button
-                    className="text-blue-500"
+                    className="text-[#01798c] cursor-pointer"
                     onClick={() => startEditing(id, text)}
                   >
                     <Icon icon="akar-icons:edit" width="24" height="24" />
@@ -140,7 +142,7 @@ const TodoList = () => {
                 )}
 
                 <button
-                  className="text-[#ff4444]"
+                  className="text-[#ff4444] cursor-pointer"
                   onClick={() => deleteTask(id)}
                 >
                   <Icon

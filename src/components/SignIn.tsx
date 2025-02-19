@@ -45,7 +45,7 @@ const SignIn = () => {
     <div className="lg:px-10 px-4 lg:py-0 py-5">
       <Link
         to={"/"}
-        className="flex items-center gap-2 lg:py-10 py-8  text-black"
+        className="flex items-center gap-2 lg:py-10 py-8  text-black max-w-[10rem]"
       >
         <Icon icon="mi:home" className="lg:text-base text-[15.8px]" />
         Back to Home

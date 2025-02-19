@@ -25,7 +25,7 @@ const Login = () => {
       toast.success("Login Succesful");
       navigate("/todo");
     } catch (err) {
-      toast.error("Error Loggin in");
+      toast.error("Error Logging in");
     }
   };
 
@@ -44,7 +44,7 @@ const Login = () => {
     <div className="lg:px-10 px-4">
       <Link
         to={"/"}
-        className="flex items-center gap-2 lg:py-10 pt-5 text-black"
+        className="flex items-center gap-2 lg:py-10 pt-5 text-black max-w-[10rem]"
       >
         <Icon icon="mi:home" className="lg:text-base text-[15.8px]" />
         Back to Home
